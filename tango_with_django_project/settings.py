@@ -15,8 +15,9 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Variable to the templates folder
+# Variable to the templates and static folders
 TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
+STATIC_PATH = os.path.join(BASE_DIR, 'static')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -70,6 +71,7 @@ TEMPLATES = [
     },
 ]
 
+STATICFILES_DIRS = (STATIC_PATH, )
 
 WSGI_APPLICATION = 'tango_with_django_project.wsgi.application'
 
