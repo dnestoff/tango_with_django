@@ -14,3 +14,8 @@ def index(request):
 
 def about(request):
     return HttpResponse("Rango's about page says hey there world! <br/> <a href='/rango'>Home</a>")
+
+def contact(request):
+    context_dict = {'email': "myemail@email.com"}
+
+    return render(request, "rango/contact.html", context_dict)
