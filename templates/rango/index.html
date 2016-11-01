@@ -6,6 +6,9 @@
 
     <head>
         <title>Rango</title>
+        <!-- Adding javascript/css -->
+        <!-- <link rel="stylesheet" href="{% static "css/base.css" %}" /> -->
+        <!-- <script src="{% static "js/jquery.js" %}"></script> -->
     </head>
 
     <body>
@@ -14,6 +17,7 @@
         hello world! <strong>{{ boldmessage }}</strong><br />
         <a href="/rango/about/">About</a><br />
         <a href="/rango/contact/">Contact</a><br />
+        <!-- 'static' tag combines STATIC_URL with "Indians_photos.png" -->
         <img src="{% static "images/Indians_photos.png" %}" alt="Indians Photo" /> <!-- New line -->
     </body>
 
