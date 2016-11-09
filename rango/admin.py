@@ -7,7 +7,7 @@ class CategoryAdmin(admin.ModelAdmin):
 # class to customize page view in /admin
 class PageAdmin(admin.ModelAdmin):
   list_display = ('title', 'category', 'views')
-  list_fiter = ('category')
+  list_filter = ('category',)
   fieldsets = [
     ('Category', {'fields': ['category']}),
     ('Page information', {'fields': ['title', 'views'], 'classes': ['collapse']}),

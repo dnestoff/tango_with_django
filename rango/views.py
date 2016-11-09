@@ -6,7 +6,7 @@ def index(request):
     categories = Category.objects.order_by('-name')[:5]
     # Construct a dictionary to pass to the template engine as its context.
     # Note the key boldmessage is the same as {{ boldmessage }} in the template!
-    context_dict = {'boldmessage': "I am bold font from the context", 'categories': categories}
+    context_dict = {'categories': categories}
 
     # Return a rendered response to send to the client.
     # We make use of the shortcut function to make our lives easier.
