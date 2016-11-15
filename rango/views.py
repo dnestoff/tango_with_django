@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from rango.models import Category 
+from rango.models import Category, Page 
 
 def index(request):
     categories = Category.objects.order_by('-name')[:5]
@@ -22,3 +22,18 @@ def contact(request):
     context_dict = {'email': "myemail@email.com", 'username': "ronaldWasHere", 'age': 23}
 
     return render(request, "rango/contact.html", context_dict)
+
+def category(request, category_name_url):
+    context_dict = {}
+
+    try:
+        # If we can't find category, the .get() method raises DoesNotExist exception.
+        # So the .get() method returns one model instance or raises an exception.
+        category = Category.objects.get(slug = category_name_url)
+        context_dict['category_name'] = category.name
+
+        context_dict['pages'] = Page.objects.filter(category=category)
+    except Category.DoesNotExist:
+        pass
+
+    return render(request, "rango/category.html", context_dict)

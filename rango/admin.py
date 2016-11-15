@@ -3,6 +3,7 @@ from rango.models import Category, Page
 
 class CategoryAdmin(admin.ModelAdmin):
   list_display = ('name', 'views', 'likes', 'popular')
+  prepopulated_fields = { 'slug': ('name', ) }
 
 # class to customize page view in /admin
 class PageAdmin(admin.ModelAdmin):
