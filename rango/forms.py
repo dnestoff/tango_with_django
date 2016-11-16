@@ -7,7 +7,7 @@ class CategoryForm(forms.ModelForm):
   likes = forms.IntegerField(widget=forms.HiddenInput(), initial = 0)
   slug = forms.CharField(widget=forms.HiddenInput(), required=False)
 
-  class meta:
+  class Meta:
     model = Category
     # tuple specifying the classes we want to use
     fields = ('name', )
@@ -17,7 +17,7 @@ class PageForm(forms.ModelForm):
   url = forms.URLField(max_length=200, help_text="Please enter the URL of the page.")
   views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
 
-  class meta:
+  class Meta:
     model = Page
     # excluding the category foreign key field from the form
     exclude = ('category', )
