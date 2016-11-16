@@ -72,5 +72,3 @@ def page(request, page_name_url):
 
     return render(request, "rango/page.html", context_dict)
 
-
-
