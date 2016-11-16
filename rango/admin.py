@@ -3,14 +3,15 @@ from rango.models import Category, Page
 
 class CategoryAdmin(admin.ModelAdmin):
   list_display = ('name', 'views', 'likes', 'popular')
+  prepopulated_fields = { 'slug': ('name', ) }
 
 # class to customize page view in /admin
 class PageAdmin(admin.ModelAdmin):
   list_display = ('title', 'category', 'views')
-  list_fiter = ('category')
+  list_filter = ('category',)
   fieldsets = [
     ('Category', {'fields': ['category']}),
-    ('Page information', {'fields': ['title', 'views'], 'classes': ['collapse']}),
+    ('Page information', {'fields': ['title', 'slug', 'views'], 'classes': ['collapse']}),
   ]
 
 # register models to make them accessible via the /admin interface

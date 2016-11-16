@@ -14,7 +14,32 @@
     <body>
 
         <h1>Rango says...</h1>
-        hello world! <strong>{{ boldmessage }}</strong><br />
+        <h2>Hello world! Here are Rango's Top Categories</h2>
+
+        {% if categories %}
+            <ul>
+            {% for category in categories %}
+                <li><a href="/rango/category/{{ category.slug }}">{{ category.name }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>There are no categories to display right now</p>
+        {% endif %}
+
+        <p><a href="/rango/add_category/">Add Category</a></p>
+
+        <h2>Hello world! Here are Rango's Top Pages</h2>
+
+        {% if pages %}
+            <ul>
+            {% for page in pages %}
+                <li><a href="/rango/page/{{ page.slug }}">{{ page.title }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>There are no pages to display right now</p>
+        {% endif %}
+
         <a href="/rango/about/">About</a><br />
         <a href="/rango/contact/">Contact</a><br />
         <!-- 'static' tag combines STATIC_URL with "Indians_photos.png" -->
