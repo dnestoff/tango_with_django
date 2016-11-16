@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from rango.models import Category, Page 
+from rango.forms import CategoryForm
 
 def index(request):
     categories = Category.objects.order_by('-name')[:5]
@@ -40,6 +41,22 @@ def category(request, category_name_url):
 
     return render(request, "rango/category.html", context_dict)
 
+# below process both GET and POST requests
+def add_category(request):
+    # a POST request?
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+
+        if form.is_valid():
+            form.save(commit = True)
+            return index(request)
+        else:
+            print(form.errors)
+    else:
+        form = CategoryForm()
+
+    return render(request, "rango/add_category.html", {'form': form})
+
 def page(request, page_name_url):
     context_dict = {}
 
@@ -54,3 +71,6 @@ def page(request, page_name_url):
         pass
 
     return render(request, "rango/page.html", context_dict)
+
+
+

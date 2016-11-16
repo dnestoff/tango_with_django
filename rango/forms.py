@@ -9,6 +9,7 @@ class CategoryForm(forms.ModelForm):
 
   class meta:
     model = Category
+    # tuple specifying the classes we want to use
     fields = ('name', )
 
 class PageForm(forms.ModelForm):
