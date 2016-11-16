@@ -12,7 +12,8 @@
     </head>
 
     <body>
-        {% if category_name %}
+
+        {% if category %}
         <h1>{{ category_name }}</h1>
             {% if pages %}
             <ul>
@@ -27,13 +28,10 @@
             The specified category {{ category_name }} does not exist!
         {% endif %}
 
-
-        <h1>{{ category.name }}</h1>
-            
-            <p>{{ category.likes }}</p>
-
-        <a href="/rango/about/">About</a><br />
-        <a href="/rango/contact/">Contact</a><br />
+        <div>
+            <a href="/rango/about/">About</a><br />
+            <a href="/rango/contact/">Contact</a><br />
+        </div>
     </body>
 
 </html>
