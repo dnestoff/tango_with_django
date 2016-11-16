@@ -1,0 +1,2 @@
+class CategoryForm(admin.ModelAdmin):
+  
