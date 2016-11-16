@@ -11,7 +11,7 @@ class PageAdmin(admin.ModelAdmin):
   list_filter = ('category',)
   fieldsets = [
     ('Category', {'fields': ['category']}),
-    ('Page information', {'fields': ['title', 'views'], 'classes': ['collapse']}),
+    ('Page information', {'fields': ['title', 'slug', 'views'], 'classes': ['collapse']}),
   ]
 
 # register models to make them accessible via the /admin interface
