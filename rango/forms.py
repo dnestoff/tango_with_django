@@ -20,4 +20,4 @@ class PageForm(forms.ModelForm):
   class Meta:
     model = Page
     # excluding the category foreign key field from the form
-    exclude = ('category', )
+    exclude = ('category', 'slug')

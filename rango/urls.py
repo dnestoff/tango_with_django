@@ -9,6 +9,7 @@ urlpatterns = [
   url(r'^contact/$', views.contact, name = 'contact'),
   url(r'^add_category/$', views.add_category, name = 'add_category'),
   # <category_name_url> names the parameter
+  url(r'^category/(?P<category_name_url>[\w\-]+)/add_page/$', views.add_page, name = 'add_page'),
   url(r'^category/(?P<category_name_url>[\w\-]+)/$', views.category, name = 'category'),
   url(r'^page/(?P<page_name_url>[\w\-]+)/$', views.page, name = 'page')
 ]
