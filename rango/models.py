@@ -26,6 +26,10 @@ class Category(models.Model):
     return self.likes >= 100
   popular.short_description = 'Top Category?'
 
+  # added to enable redirect(object) in views
+  def get_absolute_url(self):
+    return "/rango/category/%s/" % (self.slug)
+
 class Page(models.Model):
   category = models.ForeignKey(Category)
   title = models.CharField(max_length=128)
@@ -39,3 +43,6 @@ class Page(models.Model):
 
   def __str__(self):
     return '%s id: %s' % (self.title, self.id)
+
+  def get_absolute_url(self):
+    return "/rango/page/%s/" % (self.slug)
