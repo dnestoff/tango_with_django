@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse
 from rango.models import Category, Page 
 from rango.forms import CategoryForm, PageForm
 
@@ -89,7 +89,9 @@ def add_page(request, category_name_url):
                 page.views = 0
                 page.save()
 
-                return HttpResponseRedirect('/rango/category/'+category.slug+'/')
+                return redirect(category)
+                # return redirect('/rango/category/'+category.slug+'/')
+
         else:
             print(form.errors)
     else:
