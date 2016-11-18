@@ -72,3 +72,16 @@ def page(request, page_name_url):
 
     return render(request, "rango/page.html", context_dict)
 
+def add_page(request):
+    if request.method == 'POST':
+        form = PageForm(request.POST)
+
+        if form.is_valid():
+            form.save(commit = True)
+            return index(request)
+        else:
+            print(form.errors)
+    else:
+        form = PageForm()
+
+    return render(request, "rango/add_page.html", {'form': form})
