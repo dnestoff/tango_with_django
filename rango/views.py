@@ -34,6 +34,8 @@ def register(request):
         profile_form = UserProfileForm(data=request.POST)
 
         if user_form.is_valid() and profile_form.is_valid():
+            # save the user info then hash password
+            user = user_form.save()
             user.set_password(user.password)
             user.save()
 
@@ -56,7 +58,7 @@ def register(request):
         user_form = UserForm()
         profile_form = UserProfileForm()
 
-    render(request, 'rango/register.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
+    return render(request, 'rango/register.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
 
 
 def category(request, category_name_url):

@@ -7,6 +7,7 @@ urlpatterns = [
   url(r'^$', views.index, name = 'index'),
   url(r'^about/$', views.about, name = 'about'), 
   url(r'^contact/$', views.contact, name = 'contact'),
+  url(r'^register/$', views.register, name = 'register'),
   url(r'^add_category/$', views.add_category, name = 'add_category'),
   # <category_name_url> names the parameter
   url(r'^category/(?P<category_name_url>[\w\-]+)/add_page/$', views.add_page, name = 'add_page'),
