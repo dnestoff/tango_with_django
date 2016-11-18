@@ -22,7 +22,7 @@ from django.views.static import serve
 #where to require application url structures
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^rango/', include('rango.urls'))
+    url(r'^rango/', include('rango.urls', namespace="rango"))
 ]
 
 # Uncomment when Debug set to False
