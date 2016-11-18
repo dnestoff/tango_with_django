@@ -91,6 +91,7 @@ def add_page(request, category_name_url):
 
                 return redirect(category)
                 # return redirect('/rango/category/'+category.slug+'/')
+
         else:
             print(form.errors)
     else:
