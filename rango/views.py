@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from rango.models import Category, Page 
-from rango.forms import CategoryForm, PageForm
+from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm
 
 def index(request):
     categories = Category.objects.order_by('-name')[:5]
@@ -24,6 +24,40 @@ def contact(request):
     context_dict = {'email': "myemail@email.com", 'username': "ronaldWasHere", 'age': 23}
 
     return render(request, "rango/contact.html", context_dict)
+
+def register(request):
+    # set to true if a success
+    registered = False
+
+    if request.method == 'POST':
+        user_form = UserForm(data=request.POST)
+        profile_form = UserProfileForm(data=request.POST)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user.set_password(user.password)
+            user.save()
+
+            # create unpersisted UserProfile for linking to User
+            profile = profile_form.save(commit=False)
+            profile.user = user
+
+            if 'picture' in request.FILES:
+                profile.picture = request.FILES['picture']
+
+            profile.save()
+
+            # switch to True after success
+            registered = True
+
+        else:
+            print(user_form.errors, profile_form.errors)
+
+    else: 
+        user_form = UserForm()
+        profile_form = UserProfileForm()
+
+    render(request, 'rango/register.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
+
 
 def category(request, category_name_url):
     context_dict = {}
