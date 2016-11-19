@@ -1,5 +1,5 @@
 from django.contrib import admin
-from rango.models import Category, Page
+from rango.models import Category, Page, UserProfile
 
 class CategoryAdmin(admin.ModelAdmin):
   list_display = ('name', 'views', 'likes', 'popular')
@@ -17,3 +17,5 @@ class PageAdmin(admin.ModelAdmin):
 # register models to make them accessible via the /admin interface
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Page, PageAdmin)
+admin.site.register(UserProfile)
+

@@ -36,7 +36,9 @@ ALLOWED_HOSTS = ['127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    # provides Django with access to the authentication system
     'django.contrib.auth',
+    # used by the authentication application to track database models
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
