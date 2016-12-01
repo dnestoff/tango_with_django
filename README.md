@@ -83,6 +83,8 @@ Once the migrations have been made, launch the application from a browser at `ht
 
 ## Coming up
 
+Upcoming features for this project include:
+
 - Session set-up and tracking
 - Django Registration Redux
 - jQuery and AJAX additions
