@@ -12,9 +12,15 @@
     </head>
 
     <body>
-        <a href="/rango/register/">Register</a>
 
-        <h1>Rango says...</h1>
+        {% if user.is_authenticated %}
+            <h1>Rango says... hello {{ user.username }}!</h1>
+        {% else %}
+            <a href="/rango/register/">Register</a>
+            <a href="/rango/login/">Login</a>
+            <h1>Rango says... hello world!</h1>
+        {% endif %}
+        
         <h2>Hello world! Here are Rango's Top Categories</h2>
 
         {% if categories %}
