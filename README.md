@@ -111,4 +111,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to Lief Azzopardi and David Campbell, the authors of [Tango With Django](http://www.tangowithdjango.com/)
+* Hat tip to Leif Azzopardi and David Campbell, the authors of [Tango With Django](http://www.tangowithdjango.com/)
