@@ -12,7 +12,7 @@ Install postgreSQL for [Mac](https://launchschool.com/blog/how-to-install-postgr
 
 Download and install [python release 3.5.2](https://www.python.org/downloads/release/python-352/) and python's package manager [pip](https://packaging.python.org/installing/#install-pip-setuptools-and-wheel).
 
-Note: If you have Python 2 >=2.7.9 or Python 3 >=3.4 installed from python.org, you will already have pip and setuptools, but will need to upgrade to the latest version:
+_Note: If you have Python 2 >=2.7.9 or Python 3 >=3.4 installed from python.org, you will already have pip and setuptools, but will need to upgrade to the latest version:_
 
 #### On Linux or OS X:
 `   pip install -U pip setuptools`
@@ -43,22 +43,24 @@ To get the development environment up and running, clone the repository and then
 Create the database by opening up postreSQL's interactive environment:
 ```
 
-   # launch the postgres shell
+   # launches postgres shell
    psql
 
-   # create the database
+   # creates database
    davenestoff=# CREATE DATABASE tango_with_django;
 
-   # exit the postgres shell
+   # exits postgres shell
    davenestoff=# \q
    
-   # migrate to complete db setup
+   # migration to complete db setup
    python manage.py migrate
+   
 ```
 
 Once complete, run the models and migrations and seed the data. 
 
 ```
+
    python manage.py makemigrations
    python manage.py migrate
 
@@ -66,6 +68,7 @@ Once complete, run the models and migrations and seed the data.
    python populate_rango.py
 
       Starting Rango population script...
+      
 ```
 
 Once the migrations have been made, launch the application from a browser at `http://localhost:8000/rango/`. In a second tab, launch the admin panel at `http://localhost:8000/rango/`. 
@@ -98,21 +101,9 @@ Give an example
 
 Add additional notes about how to deploy this on a live system
 
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
@@ -120,4 +111,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
+* Hat tip to Lief Azzopardi and David Campbell, the authors of [Tango With Django](http://www.tangowithdjango.com/)
