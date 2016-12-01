@@ -1,3 +1,5 @@
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from rango.models import Category, Page 
@@ -24,6 +26,18 @@ def contact(request):
     context_dict = {'email': "myemail@email.com", 'username': "ronaldWasHere", 'age': 23}
 
     return render(request, "rango/contact.html", context_dict)
+
+# example view for testing login_required decorator
+@login_required
+def restricted(request):
+    return HttpResponse("Since you're logged in, you can see this text!")
+
+@login_required
+def user_logout(request):
+    logout(request)
+
+    # Take the user back to the homepage.
+    return redirect('/rango/')
 
 def register(request):
     # set to true if a success
@@ -60,6 +74,27 @@ def register(request):
 
     return render(request, 'rango/register.html', {'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
 
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username = username, password = password)
+        errors = []
+
+        if user:
+            if user.is_active:
+                # built-in method to signify successful login
+                login(request, user)
+                return redirect('/rango/')
+            else:
+                return HttpResponse("This account is disabled.")
+        else:
+            errors.append("Invalid username or password.")
+            print("Invalid login details: {0}, {1}".format(username, password))
+            return render(request, 'rango/login.html', {'errors': errors})
+    else:
+        return render(request, 'rango/login.html', {})
 
 def category(request, category_name_url):
     context_dict = {}
@@ -79,6 +114,7 @@ def category(request, category_name_url):
     return render(request, "rango/category.html", context_dict)
 
 # below process both GET and POST requests
+@login_required
 def add_category(request):
     # a POST request?
     if request.method == 'POST':
@@ -109,6 +145,7 @@ def page(request, page_name_url):
 
     return render(request, "rango/page.html", context_dict)
 
+@login_required
 def add_page(request, category_name_url):
     
     try: 
@@ -136,3 +173,4 @@ def add_page(request, category_name_url):
     context_dict = {'form': form, 'category': category}
 
     return render(request, "rango/add_page.html", context_dict)
+

@@ -12,6 +12,11 @@
     </head>
 
     <body>
+        <div>
+            <a href="/rango/">Home</a>
+            <a href="/rango/contact/">Contact</a>
+            <a href="/rango/about/">About</a>
+        </div>
 
         {% if category %}
         <h1>{{ category_name }}</h1>
@@ -27,13 +32,11 @@
         {% else %}
             The specified category {{ category_name }} does not exist!
         {% endif %}
-
+        
+        {% if user.is_authenticated %}
         <p><a href="/rango/category/{{ category_slug }}/add_page/">Add Page</a></p>
-
-        <div>
-            <a href="/rango/about/">About</a><br />
-            <a href="/rango/contact/">Contact</a><br />
-        </div>
+        {% endif %}
+        
     </body>
 
 </html>
