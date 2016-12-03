@@ -1,20 +1,16 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 
 {% load staticfiles %}
 
-<html>
+{% block title %}Contact{% endblock %}
 
-    <head>
-        <title>Rango</title>
-    </head>
+{% block body_block %}
 
-    <body>
-        <h1>Rango says...</h1>
-        <p>Thanks for visiting {{ username }}, contact us at <strong>{{ email }}.</strong></p>
-        <p>(By the way, we know you are {{ age }} years old.)</p>
-        <br />
-        <a href="/rango/about/">About</a><br />
-        <img src="{% static 'images/Indians_photos.png' %}" alt="Cubs gif" />
-    </body>
+    <h1>Rango says...</h1>
+    <p>Thanks for visiting {{ username }}, contact us at <strong>{{ email }}.</strong></p>
+    <p>(By the way, we know you are {{ age }} years old.)</p>
+    <br />
+    <a href="/rango/about/">About</a><br />
+    <img src="{% static 'images/Indians_photos.png' %}" alt="Cubs gif" />
 
-</html>
+{% endblock %}
