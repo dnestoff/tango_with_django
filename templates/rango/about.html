@@ -1,6 +1,15 @@
+{% extends 'base.html' %}
 
-<h1>Rango says...</h1>
-<p>Thanks for visiting the Rango About Page</p>
-<br />
-<a href="/rango">Home</a><br />
-<img src="{% static 'images/grass_sun.jpeg' %}" alt="grass and sun" />
+{% load staticfiles %}
+
+{% block title %}About{% endblock %}
+
+{% block body_block %}
+
+    <h1>Rango says...</h1>
+    <p>Thanks for visiting the Rango About Page</p>
+    <br />
+    <a href="/rango">Home</a><br />
+    <img src="{% static 'images/grass_sun.jpeg' %}" alt="grass and sun" />
+
+{% endblock %}

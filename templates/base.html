@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 
-{% load staticfiles %}
-
 <html>
 
   <head>
-      <title>Rango</title>
+      <title>Rango - {% block title %}A Django project{% endblock %}</title>
       <!-- Adding javascript/css -->
       <!-- <link rel="stylesheet" href="{% static "css/base.css" %}" /> -->
       <!-- <script src="{% static "js/jquery.js" %}"></script> -->
   </head>
 
   <body>
-    {% block body_block %}{% endblock %}
+    <header>
+      <ul>
+        {% if user.is_authenticated %}
+          <li><a href="/rango/restricted/">Restricted Page</a></li>
+          <li><a href="/rango/logout/">Logout</a></li>
+          <li><a href="/rango/add_category/">Add a New Category</a></li>
+      {% else %}
+          <li><a href="/rango/register/">Register Here</a></li>
+          <li><a href="/rango/login/">Login</a></li>
+        {% endif %}
+
+        <li><a href="/rango/about/">About</a></li>
+      </ul>
+    </header>
+
+    <div>
+      {% block body_block %}{% endblock %}
+    </div>
   </body>
 
 </html>

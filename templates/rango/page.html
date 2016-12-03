@@ -1,12 +1,22 @@
-{% if page %}
-    <h1>{{ page_title }}</h1>
-    <ul>
-       <li>Views: {{ page.views }}</li>
-       <li>Category: {{ page.category }}</li>
-    </ul>
-{% else %}
-    The specified page {{ page_title }} does not exist!
-{% endif %}
+{% extends 'base.html' %}
 
-<a href="/rango/about/">About</a><br />
-<a href="/rango/contact/">Contact</a><br />
+{% load staticfiles %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block body_block %}
+
+    {% if page %}
+        <h1>{{ page_title }}</h1>
+        <ul>
+           <li>Views: {{ page.views }}</li>
+           <li>Category: {{ page.category }}</li>
+        </ul>
+    {% else %}
+        The specified page {{ page_title }} does not exist!
+    {% endif %}
+
+    <a href="/rango/about/">About</a><br />
+    <a href="/rango/contact/">Contact</a><br />
+
+{% endblock %}
